@@ -26,20 +26,8 @@ fun inputNum(): CharArray {
 fun comparing(randomNum: String, inputNum: CharArray) {
     val randomNum = randomNum.toCharArray()
     val inputNum =  inputNum
-    var count = '0'
+    var count = strike(randomNum,inputNum) + ball(randomNum,inputNum)
 
-    strike(randomNum,inputNum)
-
-//    for(i in 0..2) {
-//        if(inputNum[i] == randomNum[0])
-//            count++
-//        if(inputNum[i] == randomNum[1])
-//            count++
-//        if(inputNum[i] == randomNum[2])
-//            count++
-//    }
-//
-   //print(count)
 }
 
 fun strike(randomNum: CharArray, inputNum: CharArray): Int {
@@ -48,7 +36,20 @@ fun strike(randomNum: CharArray, inputNum: CharArray): Int {
     for(i in 0..2)
         if (randomNum[i] == inputNum[i])
             count++
-    print(count)
+    print("스트라이크" + count)
+    return count
+}
+
+fun ball(randomNum: CharArray, inputNum: CharArray): Int {
+    var count = 0
+
+    if (inputNum[0] == randomNum[1] || inputNum[0] == randomNum[2])
+        count++
+    if (inputNum[1] == randomNum[0] || inputNum[1] == randomNum[2])
+        count++
+    if (inputNum[2] == randomNum[0] || inputNum[2] == randomNum[1])
+        count++
+    print("볼" + count)
     return count
 }
 
